@@ -10,6 +10,8 @@ public interface IUserService {
 
     User findById(Long id);
 
+    User findByEmail(String email);
+
     User Create(User user);
 
     User Update(User user,User updatedUser);
