@@ -26,7 +26,7 @@ public class InitUserRunner implements CommandLineRunner {
         user.setPassword("zxczxc");
 
         Role role = new Role();
-        role.setName("HR_USER");
+        role.setName("ROLE_HR");
 
         roleService.Create(role);
 

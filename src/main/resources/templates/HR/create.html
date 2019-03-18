@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kullanıcı Girişi</title>
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="screen" th:href="@{/css/signin.css}"/>
+
+</head>
+<body class="text-center">
+<form class="form-signin" th:action="@{/createjob}" th:object="${job}" method="post">
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <input type="text" id="inputEmail" th:field="*{Title}" placeholder="Başlık" class="form-control"/>
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">FirstName Error</span>
+
+    <textarea class="form-control" th:field="*{Description}"  aria-label="Açıklama"></textarea>
+    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">FirstName Error</span>
+
+    <input type="text" id="inputEmail" th:field="*{NumberofHire}" placeholder="Başlık" class="form-control"/>
+    <span th:if="${#fields.hasErrors('numberofHire')}" th:errors="*{numberofHire}">FirstName Error</span>
+
+    <input type="text" id="inputEmail" th:field="*{LastApplicationDate}" placeholder="Son Başvuru Tarihi" class="form-control"/>
+    <span th:if="${#fields.hasErrors('lastApplicationDate')}" th:errors="*{lastApplicationDate}">FirstName Error</span>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Ekle</button>
+</form>
+</body>
+</html>

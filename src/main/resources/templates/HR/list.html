@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    <h1 class="h3 mb-2 text-gray-800">Ürünler</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">Kalan</th>
+                    <th scope="col">İşlem</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="job : ${jobs.content}">
+                    <td><p th:text="${job.id}"> Id </p></td>
+                    <td><p th:text="${job.title}"> Title </p></td>
+                    <td><p th:text="${job.description}"> Description </p></td>
+                    <td><p th:text="${job.numberofHire}"> Number Of Hire </p></td>
+                    <td><p th:text="${job.lastApplicationDate}"> Last Application Date </p></td>
+                    <td><a th:href="@{/admin/product/update/{productId} (productId=${job.id})}">Düzenle</a> </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <ul th:if="${jobs.totalPages > 0}" class="pagination justify-content-end">
+                <li class="page-item" th:classappend="${jobs.number+1 == 1 || jobs.number == null} ? disabled">
+                    <a class="page-link" th:href="@{/admin/product/(page=${jobs.number})}" tabindex="-1" aria-disabled="true">Önceki</a>
+                </li>
+                <li class="page-item" th:each="pageNumber : ${pageNumbers}" th:classappend="${pageNumber==jobs.number + 1} ? active">
+                    <a class="page-link" th:href="@{/admin/product/(page=${pageNumber})}"
+                       th:text="${pageNumber}"></a>
+                </li>
+                <li class="page-item" th:classappend="${jobs.number+1 == jobs.totalPages} ? disabled">
+                    <a class="page-link" th:href="@{/admin/product/(page=${jobs.number+2})}">Sonraki</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
