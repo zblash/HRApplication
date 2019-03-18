@@ -1,5 +1,6 @@
 package com.yusufcancelik.demo.Models;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,13 +12,14 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 public class User implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull

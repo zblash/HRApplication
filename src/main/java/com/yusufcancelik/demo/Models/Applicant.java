@@ -1,5 +1,6 @@
 package com.yusufcancelik.demo.Models;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "applicants")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor

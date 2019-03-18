@@ -1,5 +1,6 @@
 package com.yusufcancelik.demo.Models;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +10,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "users")
+@Table(name = "roles")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,5 +23,4 @@ public class Role implements Serializable {
 
     @NotNull
     private String name;
-
 }

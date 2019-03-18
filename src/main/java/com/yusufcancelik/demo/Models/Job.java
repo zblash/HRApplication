@@ -1,5 +1,6 @@
 package com.yusufcancelik.demo.Models;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "jobs")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
