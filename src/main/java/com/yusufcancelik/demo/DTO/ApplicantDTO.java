@@ -1,27 +1,25 @@
-package com.yusufcancelik.demo.Models;
+package com.yusufcancelik.demo.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.yusufcancelik.demo.Models.Job;
+import com.yusufcancelik.demo.Validations.ValidResume;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "applicants")
 @Data
 @Getter
 @Setter
 @NoArgsConstructor
-public class Applicant {
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id
-    private Long id;
+public class ApplicantDTO {
 
     @NotNull
     private String name;
@@ -39,10 +37,10 @@ public class Applicant {
     @NotNull
     private String thoughts;
 
-    private String resumeLink;
+    @NotNull
+    @ValidResume
+    private MultipartFile file;
 
-    @ManyToOne
-    @JoinColumn(name = "job_id")
-    @JsonIgnore
-    private Job job;
+    @NotNull
+    private Long jobId;
 }

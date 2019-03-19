@@ -10,7 +10,7 @@
 
 </head>
 <body class="text-center">
-<form class="form-signin" th:action="@{/createjob}" th:object="${job}" method="post">
+<form class="form-signin" th:action="@{/hr/job/create}" th:object="${job}" method="post">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="text" id="inputEmail" th:field="*{Title}" placeholder="Başlık" class="form-control"/>

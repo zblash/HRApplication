@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 th:text="${job.title}"></h1>
+        <div class="col-md-3 float-right">
+            <th:block sec:authorize="hasRole('ROLE_HR')">
+                <form th:action="@{/deletejob/{jobId}(jobId=${job.id})}" th:method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <input type="hidden" name="_method" value="post"/>
+                    <button type="submit" class="btn btn-danger float-right">İlanı Kaldır</button>
+                </form>
+            </th:block>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
+        <p style="margin-top: 20px;"><strong>İş Tanımı</strong></p>
+        <p th:text="${job.description}"></p>
+        <p><strong>Alınacak Kişi Sayısı : </strong>
+            <th:block th:text="${job.numberofHire}"></th:block>
+        </p>
+        <p><strong>Son Başvuru Tarihi : </strong>
+            <th:block th:text="${job.lastApplicationDate}"></th:block>
+        </p>
+    </div>
+    <div class="clearfix"></div>
+    <div sec:authorize="!hasRole('ROLE_HR')" class="col-md-12"
+         style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
+        <form th:object="${applicant}" id="addapplicant" enctype="multipart/form-data">
+            <input type="hidden" id="JobId" name="JobId" th:value="${job.id}">
+            <div class="form-group">
+                <label for="applicantEmail">Email</label>
+                <input type="email" th:field="*{Email}" class="form-control" id="applicantEmail"
+                       placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="applicantName">İsim</label>
+                <input type="text" th:field="*{Name}" class="form-control" id="applicantName">
+            </div>
+            <div class="form-group">
+                <label for="applicantPhone">Telefon No</label>
+                <input type="text" th:field="*{Phone}" class="form-control" id="applicantPhone">
+            </div>
+            <div class="form-group">
+                <label for="applicantAddress">Adres</label>
+                <textarea class="form-control" th:field="*{Address}" id="applicantAddress" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="applicantThoughts">Sizi Neden Alalım</label>
+                <textarea class="form-control" th:field="*{Thoughts}" id="applicantThoughts" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" th:field="*{File}" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">CV</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/custom.js}"></script>
+</th:block>
+</body>
+</html>

@@ -34,6 +34,7 @@ public class Job implements Serializable {
     private int numberofHire;
 
     @NotNull
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="dd-MMM-YYYY")
     private Date lastApplicationDate;
 

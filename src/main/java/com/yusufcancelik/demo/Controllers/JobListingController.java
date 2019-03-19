@@ -1,25 +1,24 @@
-package com.yusufcancelik.demo.Controllers.HR;
+package com.yusufcancelik.demo.Controllers;
 
+import com.yusufcancelik.demo.DTO.ApplicantDTO;
+import com.yusufcancelik.demo.Models.Applicant;
 import com.yusufcancelik.demo.Models.Job;
 import com.yusufcancelik.demo.Services.Concrete.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@PreAuthorize("hasRole('ROLE_HR')")
-public class JobController {
+public class JobListingController {
 
     @Autowired
     private JobService jobService;
@@ -36,37 +35,14 @@ public class JobController {
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
-        return "HR/list";
+        return "jobListingList";
     }
 
-    @GetMapping("/jobdetail/{id}")
+
+    @GetMapping("/job/detail/{id}")
     public String jobDetailPage(@PathVariable Long id, Model model){
+        model.addAttribute("applicant",new ApplicantDTO());
         model.addAttribute("job",jobService.findById(id));
-        return "HR/detail";
-    }
-
-    @GetMapping("/createjob")
-    public String jobCreatePage(Model model) {
-        Job job = new Job();
-        job.setLastApplicationDate(new Date());
-        model.addAttribute("job", job);
-        return "HR/create";
-    }
-
-    @PostMapping("/createjob")
-    public String jobCreatePost(@Valid @ModelAttribute Job job, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("job", job);
-            return "HR/create";
-        }
-        jobService.Save(job);
-        return "redirect:/joblist";
-    }
-
-    @PostMapping("/deletejob/{id}")
-    public String jobDelete(@PathVariable Long id) {
-        Job job = jobService.findById(id);
-        jobService.Delete(job);
-        return "redirect:/joblist";
+        return "jobListingDetail";
     }
 }

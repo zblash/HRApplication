@@ -1,5 +1,6 @@
 package com.yusufcancelik.demo.Services.Abstract;
 
+import com.yusufcancelik.demo.DTO.ApplicantDTO;
 import com.yusufcancelik.demo.Models.Applicant;
 import org.springframework.data.domain.Page;
 
@@ -9,7 +10,7 @@ public interface IApplicantService {
 
     Applicant findById(Long id);
 
-    Applicant Create(Applicant applicant);
+    Applicant Create(ApplicantDTO applicantDTO);
 
     Applicant Update(Applicant applicant,Applicant updatedApplicant);
 
