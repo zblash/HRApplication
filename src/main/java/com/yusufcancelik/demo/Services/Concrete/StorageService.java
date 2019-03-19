@@ -4,13 +4,13 @@ import com.yusufcancelik.demo.Services.Abstract.IStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 
 @Service
 public class StorageService implements IStorageService {
@@ -20,7 +20,7 @@ public class StorageService implements IStorageService {
     @Override
     public String store(MultipartFile file,String fileName) {
         String uploadedFileName = fileName.toLowerCase().replaceAll(" ", "-")
-                + Math.random() +"."
+                + new Date().getTime() +"."
                 + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1);
         try {
             Files.copy(file.getInputStream(), this.rootLocation.resolve(uploadedFileName));

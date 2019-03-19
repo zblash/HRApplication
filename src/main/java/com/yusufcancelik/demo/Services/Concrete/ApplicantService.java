@@ -17,6 +17,9 @@ public class ApplicantService implements IApplicantService {
     private ApplicantRepository applicantRepository;
 
     @Autowired
+    private StorageService storageService;
+
+    @Autowired
     private JobRepository jobRepository;
 
     @Override
@@ -38,9 +41,10 @@ public class ApplicantService implements IApplicantService {
         applicant.setPhone(applicantDTO.getPhone());
         applicant.setThoughts(applicantDTO.getThoughts());
         applicant.setJob(jobRepository.findById(applicantDTO.getJobId()).orElseThrow(RuntimeException::new));
-        applicant.setResumeLink(applicantDTO.getName()+ "."
-                + applicantDTO.getFile().getOriginalFilename()
-                        .substring(applicantDTO.getFile().getOriginalFilename().lastIndexOf(".") + 1));
+
+        String fileName = storageService.store(applicantDTO.getFile(),applicantDTO.getName());
+        applicant.setResumeLink(fileName);
+
         return applicantRepository.save(applicant);
     }
 
