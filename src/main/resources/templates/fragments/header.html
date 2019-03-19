@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,9 +8,11 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" th:fragment="header">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">HRApplication</a>
-    <ul class="navbar-nav px-3">
+    <ul class="navbar-nav px-3" sec:authorize="isAuthenticated()">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
+            <form th:action="@{/logout}" method="POST">
+                <button type="submit" class="btn btn-secondary">Çıkış Yap</button>
+            </form>
         </li>
     </ul>
 </nav>
