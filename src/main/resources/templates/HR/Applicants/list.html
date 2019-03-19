@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1>Başvuranlar Listesi</h1>
+    </div>
+    <div class="col-lg-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Başvurduğu İlan</th>
+                <th scope="col">Detay</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="applicant : ${applicants.content}">
+                <td><p th:text="${applicant.id}"> Id </p></td>
+                <td><p th:text="${applicant.name}"> Name </p></td>
+                <td><p th:text="${applicant.email}"> Email </p></td>
+                <td><p th:text="${applicant.phone}"> Phone </p></td>
+                <td><p th:text="${applicant.job.title}"> Job Listing Title </p></td>
+                <td>
+                    <a th:href="@{/hr/applicant/detail/{id} (id = ${applicant.id})}" th:text="Detaylar" class="btn btn-primary"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul th:if="${applicants.totalPages > 0}" class="pagination justify-content-end">
+            <li class="page-item" th:classappend="${applicants.number+1 == 1 || applicants.number == null} ? disabled">
+                <a class="page-link" th:href="@{/hr/applicant/list/(page=${applicants.number})}" tabindex="-1"
+                   aria-disabled="true">Önceki</a>
+            </li>
+            <li class="page-item" th:each="pageNumber : ${pageNumbers}"
+                th:classappend="${pageNumber==applicants.number + 1} ? active">
+                <a class="page-link" th:href="@{/hr/applicant/list/(page=${pageNumber})}"
+                   th:text="${pageNumber}"></a>
+            </li>
+            <li class="page-item" th:classappend="${applicants.number+1 == applicants.totalPages} ? disabled">
+                <a class="page-link" th:href="@{/hr/applicant/list/(page=${applicants.number+2})}">Sonraki</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
