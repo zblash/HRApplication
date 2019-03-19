@@ -39,6 +39,12 @@ public class JobController {
         return "HR/list";
     }
 
+    @GetMapping("/jobdetail/{id}")
+    public String jobDetailPage(@PathVariable Long id, Model model){
+        model.addAttribute("job",jobService.findById(id));
+        return "HR/detail";
+    }
+
     @GetMapping("/createjob")
     public String jobCreatePage(Model model) {
         Job job = new Job();
