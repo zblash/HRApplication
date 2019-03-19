@@ -1,31 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Kullanıcı Girişi</title>
-    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" media="screen" th:href="@{/css/signin.css}"/>
+    <title>Yeni İş İlanı</title>
 
 </head>
-<body class="text-center">
-<form class="form-signin" th:action="@{/hr/job/create}" th:object="${job}" method="post">
+<body>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1>Yeni İş İlanı</h1>
+    </div>
+    <div class="col-md-12 p-3" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
 
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="text" id="inputEmail" th:field="*{Title}" placeholder="Başlık" class="form-control"/>
-    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">FirstName Error</span>
+        <form th:action="@{/hr/job/create}" th:object="${job}" method="post">
 
-    <textarea class="form-control" th:field="*{Description}"  aria-label="Açıklama"></textarea>
-    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">FirstName Error</span>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-    <input type="text" id="inputEmail" th:field="*{NumberofHire}" placeholder="Başlık" class="form-control"/>
-    <span th:if="${#fields.hasErrors('numberofHire')}" th:errors="*{numberofHire}">FirstName Error</span>
+            <div class="form-group">
+                <label for="jobTitle">Başlık</label>
+                <input type="text" id="jobTitle" th:field="*{Title}" placeholder="Başlık" class="form-control"/>
+                <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">FirstName Error</span>
+            </div>
 
-    <input type="text" id="inputEmail" th:field="*{LastApplicationDate}" placeholder="Son Başvuru Tarihi" class="form-control"/>
-    <span th:if="${#fields.hasErrors('lastApplicationDate')}" th:errors="*{lastApplicationDate}">FirstName Error</span>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Ekle</button>
-</form>
+            <div class="form-group">
+                <label for="Description">Açıklama</label>
+                <textarea class="form-control" id="Description" th:field="*{Description}"
+                          aria-label="Açıklama"></textarea>
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">FirstName Error</span>
+            </div>
+            <div class="form-group">
+                <label for="NumberofHire">İşe Alınacak Kişi Sayısı</label>
+                <input type="text" id="NumberofHire" th:field="*{NumberofHire}" placeholder="İşe Alınacak Kişi Sayısı"
+                       class="form-control"/>
+                <span th:if="${#fields.hasErrors('numberofHire')}" th:errors="*{numberofHire}">FirstName Error</span>
+            </div>
+            <div class="form-group">
+                <label for="LastApplicationDate">Başlık</label>
+                <input type="text" id="LastApplicationDate" th:field="*{LastApplicationDate}"
+                       placeholder="Son Başvuru Tarihi" class="form-control"/>
+                <span th:if="${#fields.hasErrors('lastApplicationDate')}" th:errors="*{lastApplicationDate}">FirstName Error</span>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Ekle</button>
+        </form>
+    </div>
 </body>
 </html>

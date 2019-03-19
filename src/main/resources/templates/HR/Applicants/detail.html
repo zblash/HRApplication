@@ -4,7 +4,7 @@
       layout:decorate="~{fragments/main_layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Başvuran Detayı</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="col-md-12" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
+    <div class="col-md-12 p-3" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
         <p style="margin-top: 20px;"><strong>Başvurduğu İlan : </strong>
         <a th:text="${applicant.job.title}" th:href="@{/job/detail/{id} (id = ${applicant.job.id})}"></a>
         </p>

@@ -42,6 +42,7 @@ public class HRApplicantController {
 
     @GetMapping("/detail/{id}")
     public String applicantDetailPage(@PathVariable Long id, Model model){
+        model.addAttribute("pageTitle", "Başvuran Detayları");
         Applicant applicant = applicantService.findById(id);
         model.addAttribute("applicant",applicant);
         return "/HR/Applicants/detail";

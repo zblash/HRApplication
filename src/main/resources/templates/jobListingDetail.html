@@ -5,7 +5,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>İş İlanı Detayı</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="col-md-12" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
+    <div class="col-md-12 mb-4" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd;">
         <p style="margin-top: 20px;"><strong>İş Tanımı</strong></p>
         <p th:text="${job.description}"></p>
         <p><strong>Alınacak Kişi Sayısı : </strong>
@@ -32,8 +32,7 @@
             <th:block th:text="${job.lastApplicationDate}"></th:block>
         </p>
     </div>
-    <div class="clearfix"></div>
-    <div sec:authorize="!hasRole('ROLE_HR')" class="col-md-12"
+    <div sec:authorize="!hasRole('ROLE_HR')" class="col-md-12 p-3 mb-2"
          style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
         <form th:object="${applicant}" id="addapplicant" enctype="multipart/form-data">
             <input type="hidden" id="JobId" name="JobId" th:value="${job.id}">
@@ -64,7 +63,7 @@
                     <label class="custom-file-label" for="customFile">CV</label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
     </div>
 </div>
