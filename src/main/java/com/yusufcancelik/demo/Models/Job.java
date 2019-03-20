@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,18 +26,18 @@ public class Job implements Serializable {
     @Id
     private Long id;
 
-    @NotNull
+    @NotEmpty
     private String title;
 
-    @NotNull
+    @NotEmpty
     private String description;
 
     @NotNull
-    private int numberofHire;
+    private Integer numberofHire;
 
     @NotNull
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern="dd-MMM-YYYY")
+    @DateTimeFormat (pattern="dd-M-yyyy")
     private Date lastApplicationDate;
 
     @OneToMany(mappedBy = "job",cascade = CascadeType.REMOVE,orphanRemoval = true,fetch = FetchType.EAGER)

@@ -2,6 +2,8 @@ package com.yusufcancelik.demo.Controllers.HR;
 
 import com.yusufcancelik.demo.Models.Job;
 import com.yusufcancelik.demo.Services.Concrete.JobService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ public class HRJobListingController {
     @Autowired
     private JobService jobService;
 
+    private Logger logger = LoggerFactory.getLogger(HRJobListingController.class);
+
     @GetMapping("/create")
     public String jobCreatePage(Model model) {
         Job job = new Job();
@@ -34,6 +38,8 @@ public class HRJobListingController {
             model.addAttribute("job", job);
             return "HR/JobListing/create";
         }
+
+        logger.info(String.valueOf(job.getLastApplicationDate()));
         jobService.Save(job);
         return "redirect:/joblist";
     }

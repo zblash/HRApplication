@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -24,20 +25,20 @@ public class Applicant {
     @Id
     private Long id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
-    @NotNull
+    @NotEmpty
     @Email
     private String email;
 
-    @NotNull
+    @NotEmpty
     private String Phone;
 
-    @NotNull
+    @NotEmpty
     private String address;
 
-    @NotNull
+    @NotEmpty
     private String thoughts;
 
     private String resumeLink;

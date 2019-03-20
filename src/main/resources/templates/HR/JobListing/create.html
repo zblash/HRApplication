@@ -37,13 +37,16 @@
                 <span th:if="${#fields.hasErrors('numberofHire')}" th:errors="*{numberofHire}">FirstName Error</span>
             </div>
             <div class="form-group">
-                <label for="LastApplicationDate">Başlık</label>
-                <input type="text" id="LastApplicationDate" th:field="*{LastApplicationDate}"
-                       placeholder="Son Başvuru Tarihi" class="form-control"/>
+                <label for="LastApplicationDate">Son Başvuru Tarihi</label>
+                <input type="text" id="LastApplicationDate" th:field="*{LastApplicationDate}" class="form-control"/>
                 <span th:if="${#fields.hasErrors('lastApplicationDate')}" th:errors="*{lastApplicationDate}">FirstName Error</span>
             </div>
             <button class="btn btn-primary btn-block" type="submit">Ekle</button>
         </form>
     </div>
+</div>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/custom.js}"></script>
+</th:block>
 </body>
 </html>

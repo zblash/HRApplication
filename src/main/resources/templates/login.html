@@ -12,7 +12,10 @@
 <body class="text-center">
 <form class="form-signin" th:action="@{/login}" method="post">
     <h1 class="h3 mb-3 font-weight-normal">Lütfen Giriş Yapın</h1>
-
+    <div class="alert alert-dismissible alert-danger" th:if="${param.error}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Kullanıcı Adı veya Şifre yanlış.
+    </div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <label for="inputEmail" class="sr-only">Email adresiniz</label>
     <input type="text" id="inputEmail" name="username" placeholder="Email Adresiniz" class="form-control"/>

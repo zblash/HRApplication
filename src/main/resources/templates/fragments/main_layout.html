@@ -7,7 +7,9 @@
     <meta th:name="_csrf" th:content="${_csrf.token}"/>
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
     <link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="screen" th:href="@{/webjars/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css}"/>
     <link rel="stylesheet" media="screen" th:href="@{/css/hrstyle.css}"/>
+
 </head>
 <body>
 <nav th:replace="fragments/header::header"></nav>
@@ -21,6 +23,7 @@
 </body>
 <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js}"></script>
 <th:block layout:fragment="script"></th:block>
 </html>
 </body>

@@ -8,6 +8,16 @@ $(document).ready(function () {
 
     });
 
+    var dp = $("#LastApplicationDate");
+    dp.datepicker({
+        format: "dd-m-yyyy",
+        todayBtn: "linked",
+        language: "tr"
+    });
+    dp.on('changeDate', function(ev){
+        dp.val(ev.target.value);
+        console.log(ev.target.value)
+    });
 });
 
 function fire_ajax_submit() {

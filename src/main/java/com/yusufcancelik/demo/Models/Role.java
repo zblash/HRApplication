@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -21,6 +22,6 @@ public class Role implements Serializable {
     @Id
     private Long id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 }
