@@ -16,7 +16,7 @@ public class JobService implements IJobService {
 
     @Override
     public Page<Job> findAll(int page) {
-        return jobRepository.findAll(PageRequest.of(page,10));
+        return jobRepository.findAllByOrderByIdDesc(PageRequest.of(page,10));
     }
 
     @Override

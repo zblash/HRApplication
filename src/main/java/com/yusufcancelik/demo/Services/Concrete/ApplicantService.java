@@ -24,7 +24,7 @@ public class ApplicantService implements IApplicantService {
 
     @Override
     public Page<Applicant> findAll(int page) {
-        return applicantRepository.findAll(PageRequest.of(page,10));
+        return applicantRepository.findAllByOrderByIdDesc(PageRequest.of(page,10));
     }
 
     @Override
