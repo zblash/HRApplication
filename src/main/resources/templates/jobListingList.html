@@ -28,7 +28,7 @@
                 <td><p th:text="${job.id}"> Id </p></td>
                 <td><p th:text="${job.title}"> Title </p></td>
                 <td><p th:text="${job.numberofHire}"> Number Of Hire </p></td>
-                <td><p th:text="${job.lastApplicationDate}"> Last Application Date </p></td>
+                <td><p th:text="${{job.lastApplicationDate}}"> Last Application Date </p></td>
                 <td>
                     <a th:href="@{/job/detail/{id} (id = ${job.id})}" th:text="Detaylar" class="btn btn-primary"></a>
                     <th:block sec:authorize="hasRole('ROLE_HR')">

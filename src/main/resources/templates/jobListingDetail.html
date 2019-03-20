@@ -29,7 +29,7 @@
             <th:block th:text="${job.numberofHire}"></th:block>
         </p>
         <p><strong>Son Başvuru Tarihi : </strong>
-            <th:block th:text="${job.lastApplicationDate}"></th:block>
+            <th:block th:text="${{job.lastApplicationDate}}"></th:block>
         </p>
     </div>
     <div sec:authorize="!hasRole('ROLE_HR')" class="col-md-12 p-3 mb-2"
