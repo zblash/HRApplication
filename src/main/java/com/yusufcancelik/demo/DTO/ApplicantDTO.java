@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -18,20 +17,20 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ApplicantDTO {
 
-    @NotEmpty(message = "İsim Boş Geçilemez")
+    @NotBlank(message = "İsim Boş Geçilemez")
     private String name;
 
     @Email(message = "Email Geçerli Değil")
-    @NotEmpty(message = "Email Boş Geçilemez")
+    @NotBlank(message = "Email Boş Geçilemez")
     private String email;
 
-    @NotEmpty(message = "Telefon Numarası Boş Geçilemez")
+    @NotBlank(message = "Telefon Numarası Boş Geçilemez")
     private String Phone;
 
-    @NotEmpty(message = "Adres Boş Geçilemez")
+    @NotBlank(message = "Adres Boş Geçilemez")
     private String address;
 
-    @NotEmpty(message = "Ön Yazı Boş Geçilemez")
+    @NotBlank(message = "Ön Yazı Boş Geçilemez")
     private String thoughts;
 
     @NotNull

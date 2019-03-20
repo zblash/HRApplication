@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -26,10 +27,10 @@ public class Job implements Serializable {
     @Id
     private Long id;
 
-    @NotEmpty
+    @NotBlank
     private String title;
 
-    @NotEmpty
+    @NotBlank
     private String description;
 
     @NotNull
