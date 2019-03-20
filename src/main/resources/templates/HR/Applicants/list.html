@@ -10,6 +10,13 @@
 <div layout:fragment="content">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1>Başvuranlar Listesi</h1>
+        <div class="col-md-3 float-right">
+                <form th:action="@{/deletejob/{jobId}(jobId=${job.id})}" th:method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <input type="hidden" name="_method" value="post"/>
+                    <button type="submit" class="btn btn-danger float-right">İlanı Kaldır</button>
+                </form>
+        </div>
     </div>
     <div class="col-md-12 p-3" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
         <table class="table table-striped">
@@ -31,7 +38,8 @@
                 <td><p th:text="${applicant.phone}"> Phone </p></td>
                 <td><p th:text="${applicant.job.title}"> Job Listing Title </p></td>
                 <td>
-                    <a th:href="@{/hr/applicant/detail/{id} (id = ${applicant.id})}" th:text="Detaylar" class="btn btn-primary"></a>
+                    <a th:href="@{/hr/applicant/detail/{id} (id = ${applicant.id})}" th:text="Detaylar"
+                       class="btn btn-primary"></a>
                 </td>
             </tr>
             </tbody>

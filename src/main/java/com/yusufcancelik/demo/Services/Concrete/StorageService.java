@@ -25,7 +25,7 @@ public class StorageService implements IStorageService {
         try {
             Files.copy(file.getInputStream(), this.rootLocation.resolve(uploadedFileName));
         }catch (IOException e){
-            throw new RuntimeException();
+            throw new RuntimeException("Dosya Sisteme Yüklenemedi.");
         }
         return uploadedFileName;
     }

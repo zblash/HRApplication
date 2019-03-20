@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -21,20 +22,20 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ApplicantDTO {
 
-    @NotNull
+    @NotBlank(message = "İsim Boş Geçilemez")
     private String name;
 
-    @NotNull
-    @Email
+    @Email(message = "Email Geçerli Değil")
+    @NotBlank(message = "Email Boş Geçilemez")
     private String email;
 
-    @NotNull
+    @NotBlank(message = "Telefon Numarası Boş Geçilemez")
     private String Phone;
 
-    @NotNull
+    @NotBlank(message = "Adres Boş Geçilemez")
     private String address;
 
-    @NotNull
+    @NotBlank(message = "Ön Yazı Boş Geçilemez")
     private String thoughts;
 
     @NotNull

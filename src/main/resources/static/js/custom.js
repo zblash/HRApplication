@@ -29,13 +29,11 @@ function fire_ajax_submit() {
         data: data,
         timeout: 600000,
         success: function (data) {
-            console.log(data);
-            alert("Başvurunuz alındı. En kısa sürede size dönüş yapacağız")
+            alert(data.responseText);
+            $('#addapplicant')[0].reset();
         },
         error: function (e) {
-
-            console.log("ERROR : ", e);
-            alert("Başvuru formu gönderilemedi.")
+            alert(e.responseText)
 
         }
     });
