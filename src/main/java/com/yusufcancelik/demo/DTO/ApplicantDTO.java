@@ -1,17 +1,12 @@
 package com.yusufcancelik.demo.DTO;
 
-import com.yusufcancelik.demo.Models.Job;
 import com.yusufcancelik.demo.Validations.ValidResume;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
