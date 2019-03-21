@@ -44,12 +44,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/login", "/joblist", "/job/detail/**","/applicant/form", "/css/**", "/webjars/**", "/js/**").permitAll()
-                .anyRequest().authenticated()
+                .authorizeRequests()
+                .anyRequest().permitAll()
+                .antMatchers("/hr/**").authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/joblist")
                 .loginPage("/login").permitAll()
+                .and()
+                .rememberMe()
+                .alwaysRemember(true)
                 .and()
                 .logout()
                 .logoutUrl("/logout")
