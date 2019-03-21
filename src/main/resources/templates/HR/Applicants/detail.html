@@ -19,6 +19,9 @@
         <p style="margin-top: 20px;"><strong>Başvurduğu İlan : </strong>
         <a th:text="${applicant.job.title}" th:href="@{/job/detail/{id} (id = ${applicant.job.id})}"></a>
         </p>
+        <p><strong>Başvuru Tarihi : </strong>
+            <th:block th:text="${{applicant.applicationDate}}"></th:block>
+        </p>
         <p><strong>Email : </strong>
             <th:block th:text="${applicant.email}"></th:block>
         </p>

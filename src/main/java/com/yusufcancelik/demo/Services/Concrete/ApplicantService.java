@@ -10,6 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 public class ApplicantService implements IApplicantService {
 
@@ -42,6 +46,13 @@ public class ApplicantService implements IApplicantService {
         applicant.setThoughts(applicantDTO.getThoughts());
         applicant.setJob(jobRepository.findById(applicantDTO.getJobId()).orElseThrow(RuntimeException::new));
 
+        SimpleDateFormat df = new SimpleDateFormat("dd-M-yyyy");
+        String formattedDate = df.format(new Date());
+        try {
+            applicant.setApplicationDate(df.parse(formattedDate));
+        } catch (ParseException e) {
+            throw new RuntimeException();
+        }
         String fileName = storageService.store(applicantDTO.getFile(),applicantDTO.getName());
         applicant.setResumeLink(fileName);
 
