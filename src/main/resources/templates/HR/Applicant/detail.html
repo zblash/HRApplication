@@ -17,7 +17,7 @@
 
     <div class="col-md-12 p-3" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
         <p style="margin-top: 20px;"><strong>Başvurduğu İlan : </strong>
-        <a th:text="${applicant.job.title}" th:href="@{/job/detail/{id} (id = ${applicant.job.id})}"></a>
+        <a th:text="${applicant.job.title}" th:href="@{/joblisting/detail/{id} (id = ${applicant.job.id})}"></a>
         </p>
         <p><strong>Başvuru Tarihi : </strong>
             <th:block th:text="${{applicant.applicationDate}}"></th:block>

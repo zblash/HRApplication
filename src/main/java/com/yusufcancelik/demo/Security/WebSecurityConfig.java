@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/hr/**").authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/joblist")
+                .defaultSuccessUrl("/")
                 .loginPage("/login").permitAll()
                 .and()
                 .logout()

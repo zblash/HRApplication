@@ -23,7 +23,7 @@ public class JobListingController {
     @Autowired
     private JobService jobService;
 
-    @GetMapping("/joblist")
+    @GetMapping("/")
     public String jobListPage(@RequestParam(required = false) Integer page, Model model) {
         int pageNumber = Optional.ofNullable(page).orElse(1);
         Page<Job> jobs = jobService.findAll(pageNumber - 1);
@@ -39,7 +39,7 @@ public class JobListingController {
     }
 
 
-    @GetMapping("/job/detail/{id}")
+    @GetMapping("/joblisting/detail/{id}")
     public String jobDetailPage(@PathVariable Long id, Model model){
         model.addAttribute("applicant",new ApplicantDTO());
         model.addAttribute("job",jobService.findById(id));

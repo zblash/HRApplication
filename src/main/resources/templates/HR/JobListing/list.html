@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{fragments/main_layout}"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+      layout:decorate="~{fragments/main_layout}">
 <head>
     <meta charset="UTF-8">
     <title>İş İlanları</title>
@@ -31,13 +30,12 @@
                 <td><p th:text="${{job.lastApplicationDate}}"> Last Application Date </p></td>
                 <td>
                     <a th:href="@{/joblisting/detail/{id} (id = ${job.id})}" th:text="Detaylar" class="btn btn-primary"></a>
-                    <th:block sec:authorize="hasRole('ROLE_HR')">
+
                     <form th:action="@{/hr/joblisting/delete/{jobId}(jobId=${job.id})}" th:method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" name="_method" value="post"/>
                         <button type="submit" class="btn btn-danger">X</button>
                     </form>
-                    </th:block>
                 </td>
             </tr>
             </tbody>

@@ -37,7 +37,7 @@ public class HRApplicantController {
                     .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
-        return "/HR/Applicants/list";
+        return "/HR/Applicant/list";
     }
 
     @GetMapping("/detail/{id}")
@@ -45,6 +45,6 @@ public class HRApplicantController {
         model.addAttribute("pageTitle", "Başvuran Detayları");
         Applicant applicant = applicantService.findById(id);
         model.addAttribute("applicant",applicant);
-        return "/HR/Applicants/detail";
+        return "/HR/Applicant/detail";
     }
 }

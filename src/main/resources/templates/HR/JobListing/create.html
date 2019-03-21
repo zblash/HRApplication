@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-12 p-3" style="background-color: #ffffff;border-radius: 5px;border:1px solid #dddddd">
 
-        <form th:action="@{/hr/job/create}" th:object="${job}" method="post">
+        <form th:action="@{/hr/joblisting/create}" th:object="${job}" method="post">
 
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
