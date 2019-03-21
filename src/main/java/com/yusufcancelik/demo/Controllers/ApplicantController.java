@@ -8,10 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -26,7 +24,7 @@ public class ApplicantController {
     private Logger logger = LoggerFactory.getLogger(ApplicantController.class);
 
     @PostMapping("/applicant/form")
-    public ResponseEntity<?> applicantForm(@Valid @RequestBody ApplicantDTO applicantDTO, Errors errors){
+    public ResponseEntity<?> applicantForm(@Valid @ModelAttribute ApplicantDTO applicantDTO, Errors errors){
         logger.info(String.valueOf(errors.getErrorCount()));
         if (errors.hasErrors()){
 
