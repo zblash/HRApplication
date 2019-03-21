@@ -39,7 +39,7 @@ function fire_ajax_submit() {
         data: data,
         timeout: 600000,
         success: function (data) {
-            alert(data.responseText);
+            alert(data);
             $('#addapplicant')[0].reset();
         },
         error: function (e) {

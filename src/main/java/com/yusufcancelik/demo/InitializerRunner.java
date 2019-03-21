@@ -26,16 +26,27 @@ public class InitializerRunner implements CommandLineRunner {
         storageService.init();
 
         User user = new User();
-        user.setEmail("yusufcancelik@hotmail.com");
+        user.setEmail("hrmanager@hrapplication.com");
         user.setName("Yusuf Can Celik");
-        user.setPassword("zxczxc");
+        user.setPassword("hrmanager");
+
+        User user2 = new User();
+        user2.setEmail("normaluser@hrapplication.com");
+        user2.setName("Yusuf Can Celik");
+        user2.setPassword("normaluser");
 
         Role role = new Role();
         role.setName("ROLE_HR");
 
+        Role role2 = new Role();
+        role2.setName("ROLE_User");
+
         roleService.Create(role);
+        roleService.Create(role2);
 
         user.setRole(role);
+        user2.setRole(role2);
         userService.Create(user);
+        userService.Create(user2);
     }
 }
