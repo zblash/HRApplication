@@ -9,6 +9,6 @@ public class HomeController {
 
     @RequestMapping("/login")
     public String loginPage(Authentication authentication){
-        return authentication == null ? "login" : "redirect:/joblist";
+        return authentication == null ? "login" : "redirect:/";
     }
 }
